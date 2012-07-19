@@ -1,0 +1,13 @@
+{% extends '::base.rss.twig' %}
+
+{% block title %}Coupon - Latest offers at {{ city.name }}{% endblock %}
+
+{% block url %}{{ url('city_latest', { 'city': city.slug}) }}{% endblock %}
+
+{% block description %}Most recent offers published by Coupon at {{ city.name }}{% endblock %}
+
+{% block self %}{{ url('city_latest', { 'city': city.slug, '_format': 'rss' }) }}{% endblock %}
+
+{% block items %}
+    {% include ':includes:list.rss.twig' %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Sign in your account or sign up free{% endblock %}
+{% block id 'login' %}
+
+{% block article %}
+<section id="login">
+    <h1>{{ "Account login" | trans }}</h1>
+
+    {% if error %}
+        <div>{{ error.message }}</div>
+    {% endif %}
+
+    <form action="{{ path('user_login_check') }}" method="post">
+        <label for="username">{{ "Email" | trans }}</label>
+        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+
+        <label for="password">{{ "Password" | trans }}</label>
+        <input type="password" id="password" name="_password" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+        <label for="remember_me">{{ "Keep me logged in" | trans }}</label>
+
+        <input class="button" type="submit" name="login" value="{{ "Login" | trans }}" />
+    </form>
+</section>
+
+<section id="register">
+    <a class="button" href="{{ path('user_register') }}">{{ "FREE sign up" | trans }}</a>
+</section>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

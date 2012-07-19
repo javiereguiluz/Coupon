@@ -1,0 +1,18 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}An error has occurred{% endblock %}
+{% block id 'error' %}
+
+{% block article %}
+{% if exception.message %}
+    <h1>{{ exception.message }}</h1>
+{% else %}
+    <h1>The page you requested was not found <span>(404 error)</span></h1>
+{% endif %}
+
+    <p>You may have clicked an expired link or mistyped the address. If the
+    error persists, please contact us at error@coupon.com</p>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

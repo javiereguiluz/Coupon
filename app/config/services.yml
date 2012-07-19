@@ -1,0 +1,23 @@
+# Configuration for the "global" application services
+# This file is imported from app/config/config.yml
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }
+
+    twig.extension.coupon:
+        class: Coupon\OfferBundle\Twig\Extension\CouponExtension
+        arguments: [@translator]
+        tags:
+            - { name: twig.extension }
+
+    coupon.offerbundle.listener.request:
+        class: Coupon\OfferBundle\Listener\RequestListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.request }

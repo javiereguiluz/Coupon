@@ -1,0 +1,58 @@
+{% extends '::backend.html.twig' %}
+
+{% block id 'offer' %}
+{% block title %}Offers list{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Approved</th>
+            <th>Published</th>
+            <th>Expired</th>
+            <th>Name</th>
+            <th>Store</th>
+            <th>Purchases</th>
+            <th>Minimum</th>
+            <th>Revenues (&euro;)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.approved ? '<span class="yes">&#10004;</span>' : '<span class="no">&#10008;</span>' }}</td>
+            <td>{{ entity.publishedAt|fecha('short') }}</td>
+            <td>{{ entity.expiredAt|fecha('short') }}</td>
+            <td>{{ entity.name }}</td>
+            <td>{{ entity.store }}</td>
+            <td>{{ entity.purchases }}</td>
+            <td>{{ entity.minimum }}</td>
+            <td>{{ entity.price * entity.purchases }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('backend_offer_show', { 'id': entity.id }) }}">Details</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('backend_offer_edit', { 'id': entity.id }) }}">Edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% include 'BackendBundle:Default:paginator.html.twig' with { 'route': 'backend_homepage' } only %}
+
+<ul>
+    <li>
+        <a class="button" href="{{ path('backend_offer_new') }}">
+            Add a new offer
+        </a>
+    </li>
+</ul>
+{% endblock %}

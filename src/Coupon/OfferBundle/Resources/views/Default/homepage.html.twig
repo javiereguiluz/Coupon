@@ -1,0 +1,32 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Coupon publishes amazing deals every day in your city with discounts of up to 90%{% endblock %}
+{% block id 'homepage' %}
+
+{% block promo %}
+    {% if not is_granted('ROLE_USER') %}
+        <div id="promo">
+            {% trans with { '%home_url%': path('homepage'), '%register_url%': path('user_register') } %}
+            <a href="%home_url%">Coupon</a> publishes amazing deals every day in your city with discounts of up to 90%% <a class="button" href="%register_url%">Sign up now</a>
+            {% endtrans %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block article %}
+    {% include 'OfferBundle:Default:includes/offer_detail.html.twig' %}
+{% endblock %}
+
+{% block aside %}
+    {{ parent() }}
+
+    <section id="aboutus">
+        <h2>{{ "About us" | trans }}</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+    </section>
+{% endblock %}

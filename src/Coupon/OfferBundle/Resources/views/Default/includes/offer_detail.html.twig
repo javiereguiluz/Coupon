@@ -1,0 +1,68 @@
+{% set expired = offer.expiredAt|date('YmdHis') < 'now'|date('YmdHis') %}
+<section class="description">
+    <h1><a href="{{ path('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ offer.name }}</a></h1>
+
+    {{ offer.description | show_as_list }}
+
+    {% if not expired %}
+    <a class="button" href="{{ path('purchase', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ "Buy now" | trans }}</a>
+    {% endif %}
+</section>
+
+<section class="gallery">
+    <img alt="Photo of the offer" src="{{ asset(images_dir ~ offer.photo) }}">
+
+    <p class="price">{{ offer.price }} &euro; <span>{{ discount(offer.price, offer.discount) }}</span></p>
+
+    <p><strong>{{ "Terms" | trans }}:</strong> {{ offer.terms }}</p>
+</section>
+
+<section class="status {{ expired ? 'expired' : '' }}">
+{% if not expired %}
+    <div class="countdown">
+        {% trans with {'%countdown%': offer.expiredAt | countdown } %}
+        %countdown% left
+        {% endtrans %}
+    </div>
+
+    <div class="purchases">
+        <strong>{{ "Purchases" | trans }}</strong>: {{ offer.purchases }}
+    </div>
+
+    <div class="remaining">
+        {% set units = offer.minimum - offer.purchases %}
+        {% if units > 0 %}
+            {% transchoice units with { '%units%': units } %}
+            {1} <strong>Just one more purchase</strong> needed <br/> to get the deal!|[1, 9] <strong>Just %units% more</strong> needed <br/> to get the deal!|]9,Inf] <strong>%units% more</strong> needed <br/> to get the deal
+            {% endtranschoice %}
+        {% else %}
+            {% trans with {'%minimum%': offer.minimum } %}
+            <strong>The deal is on!</strong> More than <strong>%minimum%</strong> purchased.
+            {% endtrans %}
+        {% endif %}
+    </div>
+{% else %}
+    <div class="expired">
+        {% trans with { '%expired_at%': offer.expiredAt|fecha('long') } %}
+        <strong>Expired</strong> on %expired_at%
+        {% endtrans %}
+    </div>
+
+    <div class="purchases">
+        <strong>{{ "Purchases" | trans }}</strong>: {{ offer.purchases }}
+    </div>
+{% endif %}
+</section>
+
+<section class="address">
+    <h2>{{ "Enjoy this offer at" | trans }}</h2>
+    <p>
+        <a href="{{ path('store_index', { 'city': offer.city.slug, 'store': offer.store.slug }) }}">{{ offer.store.name }}</a>
+        {{ offer.store.address | nl2br }}
+    </p>
+</section>
+
+<section class="store">
+    <h2>{{ "About the store" | trans }}</h2>
+    {{ offer.store.description }}
+</section>

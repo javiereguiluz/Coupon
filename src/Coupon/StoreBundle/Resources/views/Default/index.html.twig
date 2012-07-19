@@ -1,0 +1,67 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Store {{ store.name }}{% endblock %}
+{% block id 'Store' %}
+
+{% block rss %}
+<link rel="alternate" type="application/rss+xml" title="Latest offers of {{ store.name }} RSS" href="{{ path('store_index', { 'city': store.city.slug, 'store': store.slug, '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block article %}
+    <section id="description">
+        <h1>{{ store.name }}</h1>
+
+        <p>{{ store.description }}</p>
+    </section>
+
+    {% if offers %}
+    <section id="ultimas">
+    <h2>Latest published offers</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Published</th>
+                <th>Offer</th>
+                <th>Price</th>
+                <th>Discount</th>
+                <th>Purchases</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for offer in offers %}
+            <tr>
+                <td>{{ offer.publishedAt | fecha() }}</td>
+                <td><a href="{{ path('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ offer.name }}</a></td>
+                <td>{{ offer.price }} &euro;</td>
+                <td>{{ offer.discount }} &euro;</td>
+                <td>{{ offer.purchases }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% endif %}
+{% endblock %}
+
+{% block aside %}
+    {{ parent() }}
+
+    <section id="nearby">
+        <h2>Other stores at {{ store.city.name }}</h2>
+        <ul>
+            {% for store in nearby %}
+            <li><a href="{{ path('store_index', {'city': store.city.slug, 'store': store.slug}) }}">{{ store.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="aboutus">
+        <h2>About us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+    </section>
+{% endblock %}

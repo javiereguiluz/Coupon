@@ -1,0 +1,24 @@
+{% extends '::backend.html.twig' %}
+
+{% block id 'user' %}
+{% block title %}Add a new user{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+
+<form action="{{ path('backend_user_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('backend_user') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

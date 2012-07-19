@@ -1,0 +1,7 @@
+parameters:
+#    store.example.class: Coupon\StoreBundle\Example
+
+services:
+#    store.example:
+#        class: %Store.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

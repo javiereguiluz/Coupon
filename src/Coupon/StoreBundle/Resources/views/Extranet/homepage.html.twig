@@ -1,0 +1,52 @@
+{% extends '::extranet.html.twig' %}
+
+{% block id 'homepage' %}
+{% block title %}{{ app.user.name }} administration{% endblock %}
+
+{% block article %}
+<h1>Latest offers</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Approved</th>
+            <th>Published</th>
+            <th>Expired</th>
+            <th>Name</th>
+            <th>Purchases</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for offer in offers %}
+        <tr>
+            <td>{{ offer.approved ? '<span class="yes">&#10004;</span>' : '<span class="no">&#10008;</span>' }}</td>
+            {% if offer.approved %}
+                <td>{{ offer.publishedAt | fecha('medium', 'short') }}</td>
+                <td>{{ offer.expiredAt  | fecha('medium', 'short') }}</td>
+            {% else %}
+                <td colspan="2">Revision pending</td>
+            {% endif %}
+            <td>{{ offer.name }}</td>
+            <td>{{ offer.purchases }}</td>
+            <td>
+                <ul>
+                    {% if offer.purchases > 0 %}
+                    <li>
+                        <a href="{{ path('extranet_offer_purchases', { 'id': offer.id }) }}">View purchases</a>
+                    </li>
+                    {% endif %}
+
+                    {% if not offer.approved %}
+                    <li>
+                        <a href="{{ path('extranet_offer_edit', { 'id': offer.id }) }}">Edit</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

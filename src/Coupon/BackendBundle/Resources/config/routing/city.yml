@@ -1,0 +1,31 @@
+# City entity CRUD routes generated with generate:doctrine:crud command
+backend_city:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:City:index" }
+
+backend_city_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendBundle:City:show" }
+
+backend_city_new:
+    pattern:  /new
+    defaults: { _controller: "BackendBundle:City:new" }
+
+backend_city_create:
+    pattern:  /create
+    defaults: { _controller: "BackendBundle:City:create" }
+    requirements: { _method: post }
+
+backend_city_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendBundle:City:edit" }
+
+backend_city_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendBundle:City:update" }
+    requirements: { _method: post }
+
+backend_city_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendBundle:City:delete" }
+    requirements: { _method: post }

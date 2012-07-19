@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% set selectedCity = app.request.attributes.get('city', default_city) %}
+
+{% block stylesheets %}
+{% stylesheets '@OfferBundle/Resources/public/css/normalize.css'
+               '@OfferBundle/Resources/public/css/common.css'
+               '@OfferBundle/Resources/public/css/frontend.css'
+               output='css/frontend.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts '@OfferBundle/Resources/public/js/lt_ie9/*' output='js/lt_ie9.js' %}
+<!--[if lt IE 9]>
+    <script src="{{ asset_url }}"></script>
+<![endif]-->
+{% endjavascripts %}  
+{% javascripts '@OfferBundle/Resources/public/js/frontend/*' output='js/frontend.js' %}
+<script src="{{ asset_url }}" type="text/javascript"></script>
+{% endjavascripts %}
+{% endblock %}
+
+{% block body %}
+<header>
+    <h1><a href="{{ path('homepage', { 'city': selectedCity }) }}">COUPON</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{{ path('homepage', { 'city': selectedCity }) }}">{{ "Daily Offer" | trans }}</a></li>
+            <li><a href="{{ path('city_latest', { 'city': selectedCity }) }}">{{ "Recent Offers" | trans }}</a></li>
+            <li><a href="{{ path('user_purchases') }}">{{ "My Offers" | trans }}</a></li>
+            
+            <li>{% render "CityBundle:Default:selectCity" with { 'city': selectedCity } %}</li>
+        </ul>
+    </nav>
+</header>
+
+{% block promo %}{% endblock %}
+
+<article {{ block('id') in ['homepage', 'offer'] ? ' class="offer"' : '' }}>
+    {% block article %}{% endblock %}
+</article>
+
+<aside>
+    {% block aside %}
+    <section id="login">
+        {% render 'UserBundle:Default:loginBox' with { 'id': block('id') }, { 'standalone': true } %}
+    </section>
+    {% endblock %}
+</aside>
+{% endblock %}

@@ -1,0 +1,24 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+web/css/*
+web/js/*
+
+# Configuration files
+app/config/parameters.ini
+app/config/parameters.yml
+
+# IDE and text editor files (SublimeText, Eclipse, Zend Studio, Netbeans, PHPStorm, TextMate2)
+.buildpath
+.idea
+nbproject
+.project
+.settings
+.sublime-project
+.tm_properties

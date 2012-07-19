@@ -1,0 +1,150 @@
+/*
+
+ ,adPPYba,  88       88  8b,dPPYba,    ,adPPYba,   8b,dPPYba, 
+a8"     ""  88       88  88P'    "8a  a8"     "8a  88P'   `"8a
+8b          88       88  88       d8  8b       d8  88       88
+"8a,   ,aa  "8a,   ,a88  88b,   ,a8"  "8a,   ,a8"  88       88
+ `"Ybbd8"'   `"YbbdP'Y8  88`YbbdP"'    `"YbbdP"'   88       88
+                         88                                   
+                         88                                   
+
+-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+
+  This stylesheet is only used in the backend. Therefore, it
+  only includes the specific styles needed by the backend to
+  complete or override the frontend styles.
+
+*/
+
+
+/* ===========================================================================
+   Layout
+   ======================================================================== */
+body article {
+    padding: 0 20px;
+    width: 920px;
+}
+
+/* ===========================================================================
+   Header and main navigation menu
+   ======================================================================== */
+nav ul {
+    left: 230px;
+}
+nav ul li {
+    padding-left: 2.5em;
+}
+
+#offer nav li:nth-child(1) a,
+#store nav li:nth-child(2) a,
+#user  nav li:nth-child(3) a,
+#city  nav li:nth-child(4) a {
+    border: none !important;
+    color: #FF3385 !important;
+    font-size: 21px !important;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* ===========================================================================
+   Tables
+   ======================================================================== */
+
+table.narrow {
+    width: auto;
+}
+table thead th {
+    color: #C06;
+    font-weight: bold;
+}
+table th, table td {
+    padding: 10px 5px;
+}
+table tr, table td, table th {
+    border-width: 1px 0;
+}
+
+table td ul {
+    font-size: 13px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+table td ul li {
+    display: inline;
+    padding-right: 1em;
+}
+
+table.records_list {
+    margin-bottom: 0;
+}
+
+table.records_list span.si {
+    font-size: 18px;
+}
+table.records_list span.no {
+    font-size: 18px;
+}
+
+table.record_properties tbody th {
+    text-align: left;
+    vertical-align: top;
+}
+table.record_properties img {
+    max-width: 250px;
+}
+
+/* ===========================================================================
+   Acion list
+   
+   An action list is a '<ul>' list that meets the following requirements:
+     1. it follows a .records_list class table and doesn't have a .paginator class
+     2. it follows .paginator class list that, in turn, follows a .records_list
+        class table
+     3. it has a .record_actions class
+   ======================================================================== */
+table.records_list + ul:not(.paginator),
+table.records_list + ul.paginator + ul,
+ul.record_actions {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    overflow: hidden;
+}
+
+table.records_list + ul:not(.paginator) li,
+table.records_list + ul.paginator + ul li,
+ul.record_actions li {
+    float: left;
+    line-height: 37px;
+    margin-right: 2em;
+}
+
+ul.record_actions {
+    font-size: 18px;
+}
+
+ul.record_actions form button {
+    background: transparent;
+    border: none;
+    color: #2200C1;
+    text-decoration: underline;
+}
+ul.record_actions form button:active {
+    position: relative;
+    top: 1px;
+}
+ul.record_actions form[action*="/delete"] button {
+    color: #C06;
+}
+
+ul.record_actions li a[href*="/edit"] {
+    font-weight: bold;
+}
+
+/* ===========================================================================
+   Forms
+   ======================================================================== */
+form > div + p {
+    margin-top: 1em;
+}

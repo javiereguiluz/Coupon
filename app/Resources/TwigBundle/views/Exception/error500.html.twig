@@ -1,0 +1,15 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}An error has occurred{% endblock %}
+{% block id 'error' %}
+
+{% block article %}
+    <h1>An internal server error has occurred <span>(500 error)</span></h1>
+    
+    <p>It appears there has been an internal server error with the page you've
+    requested. The site administrator has been notified. If the error persists,
+    please contact us at error@coupon.com</p>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

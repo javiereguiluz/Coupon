@@ -1,0 +1,31 @@
+# Offer entity CRUD routes generated with generate:doctrine:crud command
+backend_offer:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:Offer:index" }
+
+backend_offer_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendBundle:Offer:show" }
+
+backend_offer_new:
+    pattern:  /new
+    defaults: { _controller: "BackendBundle:Offer:new" }
+
+backend_offer_create:
+    pattern:  /create
+    defaults: { _controller: "BackendBundle:Offer:create" }
+    requirements: { _method: post }
+
+backend_offer_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Offer:edit" }
+
+backend_offer_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendBundle:Offer:update" }
+    requirements: { _method: post }
+
+backend_offer_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Offer:delete" }
+    requirements: { _method: post }

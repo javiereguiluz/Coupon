@@ -1,0 +1,7 @@
+parameters:
+#    Offer.example.class: Coupon\OfferBundle\Example
+
+services:
+#    Offer.example:
+#        class: %Offer.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

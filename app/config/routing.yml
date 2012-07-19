@@ -1,0 +1,80 @@
+# Import routes from CityBundle bundle
+CityBundle:
+    resource: "@CityBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Import routes from OfferBundle bundle
+OfferBundle:
+    resource: "@OfferBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Import routes from StoreBundle bundle
+StoreBundle:
+    resource: "@StoreBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Import routes from the extranet defined in StoreBundle bundle
+Extranet:
+    resource: "@StoreBundle/Resources/config/routing_extranet.yml"
+    prefix:   /extranet
+
+# Import routes from UserBundle bundle
+UserBundle:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /{_locale}/user
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Import routes from BackendBundle bundle
+BackendBundle:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /backend
+
+# Contact form route
+contact:
+    pattern:  /{_locale}/contact
+    defaults: { _controller: OfferBundle:Site:contact }
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Static pages route
+static:
+    pattern:  /{_locale}/site/{page}
+    defaults: { _controller: OfferBundle:Site:static }
+    requirements:
+        _locale: en|es
+    defaults:
+        _locale: en
+
+# Full homepage route (including _locale and city slug)
+homepage:
+    pattern:  /{_locale}/{city}
+    defaults: { _controller: OfferBundle:Default:homepage, city: null, _locale: en }
+    requirements:
+        _locale: en|es
+
+# Basic homepage route (without any parameter)
+_portada:
+    pattern:  /
+    defaults: { _controller: OfferBundle:Default:homepage, city: null, _locale: en }
+
+# Internal routes required by ESI caching
+_internal:
+   resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
+   prefix:   /_internal

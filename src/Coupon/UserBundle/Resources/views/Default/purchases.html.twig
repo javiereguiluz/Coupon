@@ -1,0 +1,39 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Latest purchased offers{% endblock %}
+{% block id 'purchases' %}
+
+{% block article %}
+    <h1>{{ block('title') }}</h1>
+
+    {% for purchase in purchases %}
+        {% include 'OfferBundle:Default:includes/offer_basic.html.twig' with {
+            'offer':       purchase.offer,
+            'bought':      true,
+            'purchasedAt': purchase.createdAt
+        } %}
+    {% endfor %}
+{% endblock %}
+
+{% block aside %}
+    {{ parent() }}
+
+    <section id="nearby">
+        <h2>Offers in other cities</h2>
+        <ul>
+            {% for city in nearby %}
+            <li><a href="{{ path('city_switch', { 'city': city.slug }) }}">{{ city.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="aboutus">
+        <h2>About us</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+    </section>
+{% endblock %}

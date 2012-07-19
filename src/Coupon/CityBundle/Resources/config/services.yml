@@ -1,0 +1,7 @@
+parameters:
+#    city.example.class: Coupon\CityBundle\Example
+
+services:
+#    city.example:
+#        class: %city.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,29 @@
+# Backend homepage route
+backend_homepage:
+    pattern:  /
+    defaults: { _controller: BackendBundle:Offer:index }
+
+# Backend switch city route
+backend_city_switch:
+    pattern:  /switch-to-{city}
+    defaults: { _controller: BackendBundle:Default:switchCity }
+
+# Import the generated routes for City entity
+BackendCity:
+    resource: "@BackendBundle/Resources/config/routing/city.yml"
+    prefix:   /city
+
+# Import the generated routes for Offer entity
+BackendOffer:
+    resource: "@BackendBundle/Resources/config/routing/offer.yml"
+    prefix:   /offer
+
+# Import the generated routes for Store entity
+BackendStore:
+    resource: "@BackendBundle/Resources/config/routing/store.yml"
+    prefix:   /store
+
+# Import the generated routes for User entity
+BackendUser:
+    resource: "@BackendBundle/Resources/config/routing/user.yml"
+    prefix:   /user

@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Daily offer</source>
+                <target>Oferta del día</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Recent offers</source>
+                <target>Ofertas recientes</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>My offers</source>
+                <target>Mis ofertas</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Buy now</source>
+                <target>Comprar</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Account login</source>
+                <target>Accede a tu cuenta</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Password</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Login</source>
+                <target>Entrar</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Keep me logged in</source>
+                <target>No cerrar sesión</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Help</source>
+                <target>Ayuda</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Contact</source>
+                <target>Contacto</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Privacy</source>
+                <target>Privacidad</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>About us</source>
+                <target>Sobre nosotros</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Sign up</source>
+                <target>Regístrate</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Sign up now</source>
+                <target>Regístrate ya</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source><![CDATA[%countdown% <strong>left</strong>]]></source>
+                <target><![CDATA[<strong>Faltan</strong>: %countdown%]]></target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source><![CDATA[{1} <strong>Just one more purchase</strong> needed <br/> to get the deal!|[1, 9] <strong>Just %units% more</strong> needed <br/> to get the deal!|]9,Inf] <strong>%units% more</strong> needed <br/> to get the deal]]></source>
+                <target><![CDATA[{1} ¡<strong>Una sola compra más</strong> <br/> activa la oferta!|[1, 9] ¡<strong>Sólo faltan %units% compras</strong> <br/> para activar la oferta!|]9,Inf] Faltan <strong>%units% compras</strong> <br/> para activar la oferta]]></target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source><![CDATA[Expired on %expired_at%]]></source>
+                <target><![CDATA[<strong>Finalizada</strong> el %expired_at%]]></target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Expired on %expired_at%</source>
+                <target>Finalizada el %expired_at%</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source><![CDATA[<strong>The deal is on!</strong> More than <strong>%minimum%</strong> purchased.]]></source>
+                <target><![CDATA[<strong>Oferta activada</strong> por superar las <strong>%minimum%</strong> compras necesarias]]></target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Bought on %date%</source>
+                <target>Comprada el %date%</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Purchases</source>
+                <target>Compras</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Terms</source>
+                <target>Condiciones</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Enjoy this offer at</source>
+                <target>Disfruta de la oferta en</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>About the store</source>
+                <target>Sobre la tienda</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>View/edit my profile</source>
+                <target>Ver mi perfil</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Log out</source>
+                <target>Cerrar sesión</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>FREE sign up</source>
+                <target>Regístrate gratis como usuario</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Recent offers at</source>
+                <target>Ofertas recientes en</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Offers in other cities</source>
+                <target>Ofertas en otras ciudades</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source><![CDATA[<a href="%portada%">CUPON</a> publishes an amazing deal every day in your city with huge discounts of up to 90% <a class="boton" href="%registro%">sign up now</a>]]></source>
+                <target><![CDATA[<a href="%portada%">CUPON</a> publica cada día una oferta increíble en tu ciudad con descuentos de hasta el 90% <a class="boton" href="%registro%">Regístrate ya</a>]]></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

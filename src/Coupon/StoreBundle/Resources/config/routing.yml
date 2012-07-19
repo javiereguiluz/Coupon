@@ -1,0 +1,4 @@
+# Store index page
+store_index:
+    pattern:  /{city}/stores/{store}
+    defaults: { _controller: StoreBundle:Default:index }

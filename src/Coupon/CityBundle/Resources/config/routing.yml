@@ -1,0 +1,9 @@
+# Switch the active city to the new selected city
+city_switch:
+    pattern:  /city/switch-to-{city}
+    defaults: { _controller: CityBundle:Default:switch }
+
+# Shows the latest offers published in the given city
+city_latest:
+    pattern:  /{city}/latest
+    defaults: { _controller: CityBundle:Default:latest }

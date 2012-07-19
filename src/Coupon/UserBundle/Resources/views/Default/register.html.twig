@@ -1,0 +1,98 @@
+{% extends '::frontend.html.twig' %}
+
+{% block id 'user' %}
+{% block title %}Sign up FREE as user{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<form action="{{ path('user_register') }}" method="post" {{ form_enctype(form) }}>
+    <div>
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_row(form.name) }}
+    </div>
+
+    <div>
+        {{ form_label(form.surname) }}
+        {{ form_errors(form.surname) }}
+        {{ form_widget(form.surname, { 'attr': { 'class': 'long' } }) }}
+    </div>
+
+    <div>
+        {{ form_label(form.email) }}
+        {{ form_errors(form.email) }}
+        {{ form_widget(form.email, { 'attr': { 'class': 'long' } }) }}
+    </div>
+
+    <div>
+        {{ form_errors(form.password) }}
+        {{ form_widget(form.password) }}
+
+        <p class="help">Repeat your password twice.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.address, 'Postal address') }}
+        {{ form_errors(form.address) }}
+        {{ form_widget(form.address, { 'attr': { 'class': 'medium' } }) }}
+    </div>
+
+    <div>
+        {{ form_label(form.birthday) }}
+        {{ form_errors(form.birthday) }}
+        {{ form_widget(form.birthday) }}
+
+        <p class="help">You must be at least 18 years old to register as user.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.pin, 'Personal ID') }}
+        {{ form_errors(form.pin) }}
+        {{ form_widget(form.pin, { 'attr': { 'class': 'short' } }) }}
+
+        <p class="help">Leave no space between the numbers and the letter (e.g.: 12345678Z)</p>
+    </div>
+
+    <div>
+        {{ form_label(form.credit_card, 'Credit/Debit card number') }}
+        {{ form_errors(form.credit_card) }}
+        {{ form_widget(form.credit_card) }}
+    </div>
+
+    <div>
+        {{ form_row(form.city) }}
+
+        <p class="help">You can purchase offers published in any city, but the
+        selected city will be your preferred choice.</p>
+    </div>
+
+    <div>
+        {{ form_errors(form.subscribed) }}
+        {{ form_widget(form.subscribed) }}
+        <span>I'd like to subscribe to the Coupon newsletter</span>
+    </div>
+
+    {{ form_rest(form) }}
+
+    <input class="button" type="submit" value="Sign up" />
+
+    </div>
+</form>
+{% endblock %}
+
+{% block aside %}
+<section id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <dl>
+        <dt>¿Lorem ipsum dolor sit amet?</dt>
+        <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
+        <dt>¿Ut enim ad minim veniam?</dt>
+        <dd>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+        <dt>¿Excepteur sint occaecat cupidatat non proident?</dt>
+        <dd>Sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+    </dl>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+{% block id 'page' %}
+
+{% block article %}
+    <h1>Contact</h1>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+    consequat.</p>
+
+    <form action="{{ path('contact') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.sender, 'Your e-mail address') }}
+            {{ form_errors(form.sender) }}
+            {{ form_widget(form.sender) }}
+        </div>
+
+        {{ form_row(form.message) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Send message" />
+    </form>
+{% endblock %}

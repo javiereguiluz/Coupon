@@ -1,0 +1,38 @@
+{% set expired = offer.expiredAt|date('YmdHis') < 'now'|date('YmdHis') %}
+{% set bought  = bought|default(false) %}
+
+<section class="offer basic">
+    <div class="description">
+        <h2><a href="{{ path('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ offer.name }}</a></h2>
+
+        {{ offer.description | show_as_list }}
+
+        {% if not expired and not bought %}
+        <a class="button" href="{{ path('purchase', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ "Buy now" | trans }}</a>
+        {% endif %}
+
+        <div class="status {{ expired ? 'expired' : '' }} {{ bought ? 'bought' : '' }}">
+            {% if bought %}
+                {% trans with { '%date%': purchasedAt|fecha('long', 'medium') } %}
+                Bought on %date%
+                {% endtrans %}
+            {% elseif not expired %}
+                {% trans with {'%countdown%': offer.expiredAt | countdown } %}
+                %countdown% <strong>left</strong>
+                {% endtrans %}
+            {% else %}
+                {% trans with { '%expired_at%': offer.expiredAt|fecha('long') } %}
+                <strong>Expired</strong> on %expired_at%
+                {% endtrans %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="gallery">
+        <img alt="Photo of the offer" src="{{ asset(images_dir ~ offer.photo) }}">
+
+        <p class="price">{{ offer.price }} &euro; <span>{{ discount(offer.price, offer.discount) }}</span></p>
+
+        <p>{{ "Enjoy this offer at" | trans }} <a href="{{ path('store_index', { 'city': offer.city.slug, 'store': offer.store.slug }) }}">{{ offer.store.name }}</a></p>
+    </div>
+</section>

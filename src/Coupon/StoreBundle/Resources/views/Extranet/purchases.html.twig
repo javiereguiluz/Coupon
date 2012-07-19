@@ -1,0 +1,35 @@
+{% extends '::extranet.html.twig' %}
+
+{% block id 'offer' %}
+{% block title %}{{ offer.name }} offer purchases{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>PIN</th>
+            <th>Full name</th>
+            <th>Purchased at</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% set total = 0 %}
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.user.pin }}</td>
+            <td>{{ purchase.user.name ~ ' ' ~ purchase.user.surname }}</td>
+            <td>{{ purchase.createdAt | fecha('long', 'medium') }}</td>
+        </tr>
+        {% set total = total + purchase.offer.price %}
+        {% endfor %}
+        <tr>
+            <th>TOTAL</th>
+            <td>{{ total }} &euro;</td>
+            <td>{{ purchases | length }} purchases</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

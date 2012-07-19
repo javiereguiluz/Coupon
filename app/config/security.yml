@@ -1,0 +1,63 @@
+security:
+
+    acl:
+        connection: default
+
+    firewalls:
+
+        backend:
+            pattern:        ^/backend
+            provider:       administrators
+            http_basic:     ~
+
+        extranet:
+            pattern:        ^/extranet
+            provider:       stores
+            anonymous:      ~
+            form_login:
+                login_path: /extranet/login
+                check_path: /extranet/login_check
+            logout:
+                path:       /extranet/logout
+                target:     /extranet
+
+        frontend:
+            pattern:        ^/*
+            provider:       users
+            anonymous:      ~
+            form_login:
+                login_path: user_login
+                check_path: user_login_check
+            logout:
+                path:       user_logout
+            remember_me:
+                key:        coupon1234
+                lifetime:   604800  # 604.800 = 3.600 * 24 * 7 = 1 week
+
+    access_control:
+        - { path: ^/(es|en)/user/(login|register), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(es|en)/user/*,    roles: ROLE_USER }
+        - { path: ^/extranet/login,    roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/extranet/*,        roles: ROLE_STORE }
+        - { path: ^/backend/*,         roles: ROLE_ADMIN }
+
+    encoders:
+        Coupon\UserBundle\Entity\User:             { algorithm: sha512, iterations: 10 }
+        Coupon\StoreBundle\Entity\Store:           { algorithm: sha512, iterations: 10 }
+        Symfony\Component\Security\Core\User\User: sha512
+
+    providers:
+
+        users:
+            entity: { class: Coupon\UserBundle\Entity\User, property: email }
+
+        stores:
+            entity: { class: Coupon\StoreBundle\Entity\Store, property: login }
+
+        administrators:
+            users:
+                # login = admin, pass = 1234
+                admin: { password: Eti36Ru/pWG6WfoIPiDFUBxUuyvgMA4L8+LLuGbGyqV9ATuT9brCWPchBqX5vFTF+DgntacecW+sSGD+GZts2A==, roles: ROLE_ADMIN }
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER, ROLE_STORE, ROLE_ALLOWED_TO_SWITCH]

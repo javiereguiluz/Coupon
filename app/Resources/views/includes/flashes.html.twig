@@ -1,0 +1,7 @@
+{% if app.session.getFlashes() | length > 0 %}
+    {% set flashType = app.session.hasFlash('error') ? 'error' : 'info' %}
+    <p id="flash" class="{{ flashType }}">
+        {{ flashType == 'error' ? '<strong>Error</strong> ' : '' | raw }}
+        {{ app.session.getFlash(flashType) }}
+    </p>
+{% endif %}

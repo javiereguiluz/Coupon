@@ -1,0 +1,53 @@
+{% extends '::extranet.html.twig' %}
+
+{% block id 'store' %}
+{% block title %}View / Edit my profile{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<form action="{{ path('extranet_profile') }}" method="post" {{ form_enctype(form) }}>
+<div>
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name, { 'attr': { 'class': 'long' } }) }}
+
+        <p class="help">You can change it later.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.login, 'Username') }}
+        {{ form_errors(form.login) }}
+        {{ form_widget(form.login) }}
+
+        <p class="help">You cannot change the username.</p>
+    </div>
+
+    <div>
+        {{ form_widget(form.password) }}
+
+        <p class="help">If you want to change your password, repeat it twice.
+        If you don't want to change it, leave it blank.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div>
+        {{ form_label(form.city) }}
+        {{ form_errors(form.city) }}
+        {{ form_widget(form.city) }}
+    </div>
+
+    {{ form_rest(form) }}
+
+    <input class="button" type="submit" value="Save changes" />
+</div>
+</form>
+{% endblock %}

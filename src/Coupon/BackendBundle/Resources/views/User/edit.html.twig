@@ -1,0 +1,30 @@
+{% extends '::backend.html.twig' %}
+
+{% block id 'user' %}
+{% block title %}Edit {{ entity }} user{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+
+<form action="{{ path('backend_user_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+    {{ form_widget(edit_form) }}
+    <p>
+        <button class="button" type="submit">Save changes</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('backend_user') }}">
+            Back to list
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('backend_user_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete user</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

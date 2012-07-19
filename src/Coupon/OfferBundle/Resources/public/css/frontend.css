@@ -1,0 +1,425 @@
+/*
+
+ ,adPPYba,  88       88  8b,dPPYba,    ,adPPYba,   8b,dPPYba, 
+a8"     ""  88       88  88P'    "8a  a8"     "8a  88P'   `"8a
+8b          88       88  88       d8  8b       d8  88       88
+"8a,   ,aa  "8a,   ,a88  88b,   ,a8"  "8a,   ,a8"  88       88
+ `"Ybbd8"'   `"YbbdP'Y8  88`YbbdP"'    `"YbbdP"'   88       88
+                         88                                   
+                         88                                   
+
+-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+
+  This stylesheet is only used in frontend, as it contains the
+  specific frontend styles.
+
+*/
+
+/* ===========================================================================
+   Layout
+   ======================================================================== */
+article {
+    float: left;
+    padding: 0 10px 0 20px;
+    width: 700px;
+}
+article > section {
+    margin-bottom: 1em;
+}
+
+section:before, section:after { content: ""; display: table; }
+section:after { clear: both; }
+section { zoom: 1; }
+
+aside {
+    float: right;
+    padding: 0 20px 0 10px;
+    width: 200px;
+}
+
+/* ===========================================================================
+   Header and main navigation menu
+   ======================================================================== */
+nav ul {
+    left: 180px;
+}
+nav ul li:last-child {
+   float: right;
+}
+nav ul li select {
+   ffont-size: 16px;
+}
+
+#homepage  nav li:nth-child(1) a,
+#latest    nav li:nth-child(2) a,
+#purchases nav li:nth-child(3) a {
+    border: none;
+    color: #FF3385 !important;
+    font-size: 21px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+/* ===========================================================================
+   Sidebar
+   ======================================================================== */
+aside #login h2 {
+    color: #777;
+    margin: -.5em 0 .5em;
+    text-align: center;
+}
+aside #login .button {
+    background-color: #008000;
+    color: #FFF;
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+    margin: 0 0 1em;
+    padding: .5em 1em;
+    text-align: center;
+    text-shadow: none;
+}
+aside #login .button:hover { background: rgba(0,128,0, 0.8); }
+aside:hover #login .button { text-decoration: none; }
+
+aside #login form {
+    background: #DCDCDC;
+    padding: .5em;
+}
+aside #login label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+aside #login input[type="checkbox"] + label {
+    display: inline;
+}
+aside #login input {
+    font-size: 14px;
+    padding: 2px;
+    margin-bottom: 7px;
+}
+aside #login form input[type="submit"] {
+    margin: 0;
+    padding: 4px 7px;
+    position: static;
+}
+aside #login input[name="_username"] {
+    width: 170px;
+}
+aside #login input[name="_password"] {
+    width: 110px;
+}
+
+/* When the user is logged in... */
+aside #login p strong {
+    display: block;
+    font-size: 18px;
+}
+aside #login a {
+    display: block;
+    font-size: 16px;
+    margin: .5em;
+}
+
+aside #nearby ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+aside #nearby li {
+    font-weight: bold;
+}
+aside #nearby li a {
+    font-weight: normal;
+}
+
+aside #terms, aside #aboutus {
+    color: #444;
+}
+
+/* ===========================================================================
+   Offer details page
+   ======================================================================== */
+.offer h1 {
+    margin-top: 0;
+}
+
+.offer .description {
+    float: left;
+    font-size: 14px;
+    width: 350px;
+}
+
+.offer .description h1 a,
+.offer.basic .description h2 a {
+    color: #C06;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.2;
+    text-decoration: none;
+}
+.offer.basic .description h2 a {
+    font-size: 21px;
+}
+.offer .description h1 a:hover,
+.offer.basic .description h2 a:hover {
+    color: #2200C1 !important;
+}
+
+.offer .button {
+    font-size: 28px;
+    padding: .4em .75em;
+}
+
+.offer .gallery {
+    font-size: 13px;
+    float: right;
+    position: relative;
+    width: 320px;
+}
+.offer .gallery img {
+    width: 320px;
+    margin-bottom: 13px;
+}
+.offer .gallery .price {
+    background: rgba(0, 21, 78, 0.9);
+    color: #FFF;
+    display: inline-block;
+    font-size: 28px;
+    padding: .25em .5em;
+    position: absolute;
+    top: 192px;
+    left: 0;
+}
+.offer .gallery .price span {
+    color: #FF3385;
+    font-size: 21px;
+    font-weight: bold;
+    padding-left: .5em;
+    text-shadow: 0 1px 1px #00154E;
+}
+
+.offer .status {
+    background: #DCDCDC;
+    clear: both;
+    margin: 1em 0;
+    padding: .5em 1em;
+    overflow: hidden;
+}
+.offer .status div {
+    float: left;
+}
+.offer .status .countdown, .offer .status .purchases {
+    font-size: 21px;
+    line-height: 36px;
+    width: 35%;
+}
+.offer .status .remaining {
+    width: 30%;
+}
+.offer .expired .countdown {
+    width: 60%;
+}
+.offer .expired .purchases {
+    width: 35%;
+}
+
+.offer .address {
+    float: left;
+    width: 200px;
+}
+.offer .store {
+    float: right;
+    width: 450px;
+}
+.offer .address h2, .offer .store h2 {
+    font-size: 16px;
+    margin-bottom: .25em;
+}
+
+.offer .address a {
+    display: block;
+    font-size: 18px;
+    padding-bottom: .25em;
+}
+.offer .address p {
+    font-size: 14px;
+}
+
+.offer .store {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* ===========================================================================
+   Offer basic details page
+   ======================================================================== */
+.offer.basic {
+   margin: 1em 0 2em;
+}
+
+.offer.basic h2 {
+   margin-top: 0;
+}
+
+.offer.basic .description {
+   float: left;
+   width: 400px;
+   font-size: 14px;
+}
+.offer.basic .description p {
+   margin-top: 1em;
+}
+
+.offer.basic .button {
+    font-size: 21px;
+}
+
+.offer.basic .status {
+    background: none;
+    padding: 0 1em;
+}
+.offer.basic .status.expired,
+.offer.basic .status.bought {
+    font-weight: bold;
+}
+.offer.basic .button + .status {
+    float: right;
+}
+
+.offer.basic .gallery {
+   float: right;
+   width: 240px;
+}
+.offer.basic .gallery img {
+   width: 240px;
+   margin-bottom: .5em;
+}
+.offer.basic .gallery .price {
+   font-size: 21px;
+   top: 145px;
+}
+.offer.basic .cta {
+   background: #008000;
+   border-radius: 3px;
+   display: block;
+   font-size: 16px;
+   line-height: 1;
+   margin: .5em;
+   min-width: 0;
+   width: 100px;
+}
+
+/* ===========================================================================
+   Homepage
+   ======================================================================== */
+#homepage #promo {
+    background-color: #CCDAFF;
+    font-size: 18px;
+    padding: .5em 1em;
+    position: relative;
+    top: -1em;
+}
+#homepage #promo .button {
+    background-color: #008000;
+    margin-left: .5em;
+    text-shadow: none;
+}
+#homepage #promo .button:hover {
+    background-color: background: rgba(0,128,0, 0.8);
+}
+
+/* ===========================================================================
+   City
+   ======================================================================== */
+#city aside #nearby ul {
+    font-size: 16px;
+}
+
+/* ===========================================================================
+   Store
+   ======================================================================== */
+#store #description {
+    line-height: 1.4;
+}
+
+#store #description h1 {
+    margin-bottom: 0;
+}
+
+#store tr, #store th, #store td {
+    border-width: 1px 0;
+}
+
+#store table tr *:nth-child(5n+1),
+#store table tr *:nth-child(5n+2) {
+    text-align: left;
+}
+#store table tr *:nth-child(5n+3),
+#store table tr *:nth-child(5n+4),
+#store table tr *:nth-child(5n+5) {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ===========================================================================
+   Forms
+   ======================================================================== */
+form label {
+    width: 150px;
+}
+
+form p.ayuda {
+    margin-left: 150px;
+}
+
+/* ===========================================================================
+   Login + Sign Up page
+   ======================================================================== */
+#login article {
+    position: static;
+    min-height: 400px;
+    overflow: hidden;
+    padding-top: 2em;
+    width: 100%;
+}
+#login aside {
+    display: none;
+}
+
+#login #login {
+    border-right: 2px solid #CCC;
+    float: left;
+    width: 48%;
+}
+#login #register {
+    float: right;
+    width: 48%;
+}
+
+#login #login h1 {
+    margin-bottom: .5em;
+    margin-left: 3em;
+}
+#login #login form {
+    margin-left: 6em;
+}
+
+#login #login input[type='text'],
+#login #login input[type='password'] {
+    display: block;
+}
+#login #login input[type='submit'] {
+    font-weight: bold;
+    padding: .5em 1em;
+    position: static;
+}
+
+#login #register a {
+    display: block;
+    font-size: 28px;
+    margin: 3em 2em;
+    text-align: center;
+    width: 50%;
+}

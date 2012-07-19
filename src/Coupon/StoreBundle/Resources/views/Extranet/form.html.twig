@@ -1,0 +1,108 @@
+{% extends '::extranet.html.twig' %}
+
+{% block id 'offer' %}
+{% block title %}{{ action == 'new' ?
+    'Add a new offer'
+    :
+    'Edit ' ~ offer.name ~ ' offer'
+}}{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<form action="{{ action == 'new' ? path('extranet_offer_new') : path('extranet_offer_edit', { 'id': offer.id }) }}" method="post" {{ form_enctype(form) }}>
+    <div>
+    {{ form_errors(form) }}
+
+    <div>
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name, { 'attr': { 'class': 'long' } }) }}
+    </div>
+
+    <div>
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+
+        <p class="help">Escribe cada característica en una línea.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.terms, 'Terms and conditions') }}
+        {{ form_errors(form.terms) }}
+        {{ form_widget(form.terms, { 'attr': { 'class': 'medium' } }) }}
+
+        <p class="help">Examples: Limit 1 per person; Appointment required; Must be 21 or older</p>
+    </div>
+
+    {{ form_row(form.terms) }}
+
+    <div>
+        {{ form_label(form.photo, 'Photograph') }}
+        {{ form_errors(form.photo) }}
+
+        {% if action == 'edit' %}
+        <img src="{{ asset(images_dir ~ offer.photo) }}" />
+        <p class="help">(This is a thumbnail)</p>
+
+        {{ form_label(form.photo, 'Edit photo') }}
+        {% endif %}
+
+        {{ form_widget(form.photo) }}
+
+        <p class="help">Max. upload size: 500 KB. JPG is preferred.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.price) }}
+        {{ form_errors(form.price) }}
+        {{ form_widget(form.price, { 'attr': { 'class': 'short' } }) }}
+
+        <p class="help">Public retail price.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.discount) }}
+        {{ form_errors(form.discount) }}
+        {{ form_widget(form.discount, { 'attr': { 'class': 'short' } }) }}
+
+        <p class="help">Discount on the original price.</p>
+    </div>
+
+    <div>
+        {{ form_label(form.minimum, 'Purchases needed') }}
+        {{ form_errors(form.minimum) }}
+        {{ form_widget(form.minimum, { 'attr': { 'class': 'short' } }) }}
+
+        <p class="help">Minimum purchases required to activate the offer.</p>
+    </div>
+
+    {% if action == 'new' %}
+    <div>
+        {{ form_errors(form.accept) }}
+        {{ form_widget(form.accept) }} <span>I declare that all information in this offer is correct and that I am aware of the obligation to comply with the promised conditions and that I have the means to do so.</span>
+    </div>
+    {% endif %}
+
+    {{ form_rest(form) }}
+
+    <input class="button" type="submit" value="{{ action == 'new' ? 'Add offer' : 'Save changes' }}" />
+    </div>
+</form>
+{% endblock %}
+
+{% block aside %}
+<section id="faq">
+    <h2>Frequently asked questions</h2>
+
+    <dl>
+        <dt>¿Lorem ipsum dolor sit amet?</dt>
+        <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
+        <dt>¿Ut enim ad minim veniam?</dt>
+        <dd>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+        <dt>¿Excepteur sint occaecat cupidatat non proident?</dt>
+        <dd>Sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+    </dl>
+</section>
+{% endblock %}

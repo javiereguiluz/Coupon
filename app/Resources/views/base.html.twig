@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}{% endblock %} | Coupon</title>
+    {% block stylesheets %}{% endblock %}
+    {% block rss %}{% endblock %}
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}" />
+    {% block javascripts %}{% endblock %}
+</head>
+
+<body id="{% block id '' %}"><div id="container">
+    {% block body %}{% endblock %}
+    
+    <footer>
+        &copy; {{ 'now'|date('Y') }} - Coupon
+        <a href="{{ path('static', { 'page': 'help' }) }}">{{ "Help" | trans }}</a>
+        <a href="{{ path('contact') }}">{{ "Contact" | trans }}</a>
+        <a href="{{ path('static', { 'page': 'privacy' }) }}">{{ "Privacy" | trans }}</a>
+        <a href="{{ path('static', { 'page': 'about-us' }) }}">{{ "About us" | trans }}</a>
+        
+        {% set locale = app.request.session.locale %}
+        <section id="language">
+        {% if locale == 'en' %}
+            <a href="{{ path('homepage', { '_locale': 'es' }) }}">Español</a> - <span>English</span>
+        {% elseif locale == 'es' %}
+            <span>Español</span> - <a href="{{ path('homepage', { '_locale': 'en' }) }}">English</a>
+        {% endif %}
+        </section>
+    </footer>
+</div></body>
+
+</html>

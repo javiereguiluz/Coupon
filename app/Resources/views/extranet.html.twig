@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets '@OfferBundle/Resources/public/css/normalize.css'
+               '@OfferBundle/Resources/public/css/common.css'
+               '@StoreBundle/Resources/public/css/extranet.css'
+               output='css/extranet.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts '@OfferBundle/Resources/public/js/lt_ie9/*' output='js/lt_ie9.js'%}
+<!--[if lt IE 9]>
+    <script src="{{ asset_url }}"></script>
+<![endif]-->
+{% endjavascripts %}  
+{% endblock %}
+
+{% block body %}
+<header>
+    <h1><a href="{{ path('extranet_homepage') }}">CUPON EXTRANET</a></h1>
+    
+    <nav>
+        <ul>
+            <li><a href="{{ path('extranet_homepage') }}">Offers</a></li>
+            <li><a href="{{ path('extranet_profile') }}">My Profile</a></li>
+            <li><a href="{{ path('extranet_logout') }}">Log out</a></li>
+        </ul>
+    </nav>
+    
+    <p>General Customer Service <strong>(555) XX XXX</strong></p>
+</header>
+
+{% include ':includes:flashes.html.twig' %}
+
+<article>
+    {% block article %}{% endblock %}
+</article>
+
+<aside>
+    {% block aside %}
+    <a class="button" href="{{ path('extranet_offer_new') }}">Add an offer</a>
+    
+    <section id="faq">
+        <h2>Frequently asked questions</h2>
+        
+        <dl>
+            <dt>¿Lorem ipsum dolor sit amet?</dt>
+            <dd>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</dd>
+            <dt>¿Ut enim ad minim veniam?</dt>
+            <dd>Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</dd>
+            <dt>¿Excepteur sint occaecat cupidatat non proident?</dt>
+            <dd>Sunt in culpa qui officia deserunt mollit anim id est laborum.</dd>
+        </dl>
+    </section>
+    {% endblock %}
+</aside>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends '::backend.html.twig' %}
+
+{% block id 'store' %}
+{% block title %}Add a new store{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+<form action="{{ path('backend_store_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button class="button" type="submit">Add store</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('backend_store') }}">
+            Back to list
+        </a>
+    </li>
+</ul>
+{% endblock %}

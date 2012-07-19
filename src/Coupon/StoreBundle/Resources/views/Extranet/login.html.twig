@@ -1,0 +1,29 @@
+{% extends '::frontend.html.twig' %}
+
+{% block id 'login' %}
+{% block title %}Manange your store{% endblock %}
+
+{% block article %}
+<h1>{{ block('title') }}</h1>
+
+{% if error %}
+    <div>{{ error.message }}</div>
+{% endif %}
+
+<form action="{{ path('extranet_login_check') }}" method="post">
+    <div>
+        <label for="username">User:</label>
+        <input type="text" id="username" name="_username" />
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="_password" />
+    </div>
+
+    <input class="button" type="submit" name="login" value="Login" />
+</form>
+{% endblock %}
+
+{% block aside %}
+{% endblock %}

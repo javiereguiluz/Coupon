@@ -1,0 +1,22 @@
+<select id="selectedcity">
+{% for city in cities %}
+    <option value="{{ city.slug }}"
+            data-url="{{ is_granted('ROLE_ADMIN') ?
+                         url('backend_city_switch', { 'city': city.slug })
+                         :
+                         url('city_switch', { 'city': city.slug })
+                      }}"
+            {{ selectedCity == city.slug ? 'selected="selected"' : '' }}>
+        {{ city.name }}
+    </option>
+{% endfor %}
+</select>
+
+<script type="text/javascript">
+    var list = document.getElementById('selectedcity');
+
+    list.onchange = function() {
+        var url = list.options[list.selectedIndex].getAttribute('data-url');
+        window.location = url;
+    };
+</script>

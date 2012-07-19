@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+{% stylesheets '@OfferBundle/Resources/public/css/normalize.css'
+               '@OfferBundle/Resources/public/css/common.css'
+               '@BackendBundle/Resources/public/css/backend.css'
+               output='css/backend.css' %}
+<link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% javascripts '@OfferBundle/Resources/public/js/lt_ie9/*' output='js/lt_ie9.js' %}
+<!--[if lt IE 9]>
+    <script src="{{ asset_url }}"></script>
+<![endif]-->
+{% endjavascripts %}  
+{% endblock %}
+
+{% block body %}
+<header>
+    <h1><a href="{{ path('backend_homepage') }}">CUPON ADMIN</a></h1>
+    <nav>
+        <ul>
+            <li><a href="{{ path('backend_offer') }}">Offers</a></li>
+            <li><a href="{{ path('backend_store') }}">Stores</a></li>
+            <li><a href="{{ path('backend_user') }}">Users</a></li>
+            <li><a href="{{ path('backend_city') }}">Cities</a></li>
+            
+            <li>{% render "CityBundle:Default:selectCity" with { 'city': app.session.get('city') } %}</li>
+        </ul>
+    </nav>
+</header>
+
+{% include ':includes:flashes.html.twig' %}
+
+<article>
+    {% block article %}{% endblock %}
+</article>
+{% endblock %}

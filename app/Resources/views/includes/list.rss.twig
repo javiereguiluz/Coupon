@@ -1,0 +1,20 @@
+{% for offer in offers %}
+<item>
+    <title>{{ offer.name }}</title>
+    <link>{{ url('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}</link>
+    <description><![CDATA[
+        {% set photoUrl = 'http://'
+                           ~ app.request.server.get('SERVER_NAME')
+                           ~ asset(images_dir ~ offer.photo) %}
+        <img alt="Photo of the offer" src="{{ photoUrl }}">
+        <br/>
+        {{ offer.description | show_as_list }}
+        <br/>
+        <strong><a href="{{ url('purchase', { 'city': offer.city.slug, 'slug': offer.slug }) }}">Buy now</a></strong>
+        <br/>
+        <p>View other offers of the same store <a href="{{ url('store_index', { 'city': offer.city.slug, 'store' : offer.store.slug }) }}">{{ offer.store.name }}</a></p>
+    ]]></description>
+    <pubDate>{{ offer.publishedAt | date('r') }}</pubDate>
+    <guid>{{ url('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}</guid>
+</item>
+{% endfor %}

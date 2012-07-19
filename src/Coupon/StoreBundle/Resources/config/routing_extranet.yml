@@ -1,0 +1,37 @@
+# Extranet homepage
+extranet_homepage:
+    pattern:  /
+    defaults: { _controller: StoreBundle:Extranet:homepage }
+
+# Create a new offer
+extranet_offer_new:
+    pattern:  /offer/new
+    defaults: { _controller: StoreBundle:Extranet:newOffer }
+
+# Edit an offer
+extranet_offer_edit:
+    pattern:  /offer/edit/{id}
+    defaults: { _controller: StoreBundle:Extranet:editOffer }
+
+# Display the purchases of an offer
+extranet_offer_purchases:
+    pattern:  /offer/purchases/{id}
+    defaults: { _controller: StoreBundle:Extranet:purchases }
+
+# Display the profile of the store
+extranet_profile:
+    pattern:  /profile
+    defaults: { _controller: StoreBundle:Extranet:profile }
+
+# Extranet login
+extranet_login:
+    pattern:   /login
+    defaults:  { _controller: StoreBundle:Extranet:login }
+
+# Extranet login check
+extranet_login_check:
+    pattern:   /login_check
+
+# Extranet log out
+extranet_logout:
+    pattern:   /logout

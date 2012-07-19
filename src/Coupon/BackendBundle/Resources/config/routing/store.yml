@@ -1,0 +1,31 @@
+# Store entity CRUD routes generated with generate:doctrine:crud command
+backend_store:
+    pattern:  /
+    defaults: { _controller: "BackendBundle:Store:index" }
+
+backend_store_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BackendBundle:Store:show" }
+
+backend_store_new:
+    pattern:  /new
+    defaults: { _controller: "BackendBundle:Store:new" }
+
+backend_store_create:
+    pattern:  /create
+    defaults: { _controller: "BackendBundle:Store:create" }
+    requirements: { _method: post }
+
+backend_store_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BackendBundle:Store:edit" }
+
+backend_store_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BackendBundle:Store:update" }
+    requirements: { _method: post }
+
+backend_store_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BackendBundle:Store:delete" }
+    requirements: { _method: post }

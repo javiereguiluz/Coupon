@@ -1,0 +1,9 @@
+# Display offer details route
+offer:
+    pattern:  /{city}/offers/{slug}
+    defaults: { _controller: OfferBundle:Default:offer }
+
+# Purchase offer route
+purchase:
+    pattern:  /{city}/offers/{slug}/purchase
+    defaults: { _controller: UserBundle:Default:purchase }

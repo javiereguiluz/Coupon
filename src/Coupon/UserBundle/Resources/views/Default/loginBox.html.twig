@@ -1,0 +1,31 @@
+{% if is_granted('ROLE_USER') %}
+
+    {% include ':includes:flashes.html.twig' %}
+
+    <p>Logged in as <strong>{{ user.name ~ ' ' ~ user.surname }}</strong></p>
+
+    <a href="{{ path('user_profile') }}">{{ "View/edit my profile" | trans }}</a>
+    <a href="{{ path('user_logout') }}">{{ "Log out" | trans }}</a>
+
+{% else %}
+
+    {% if id != 'homepage' %}
+        <a class="button" href="{{ path('user_register') }}">{{ "Sign up" | trans }}</a>
+    {% endif %}
+
+    <h2>{{ "Account login" | trans }}</h2>
+
+    <form action="{{ path('user_login_check') }}" method="post">
+        <label for="login_user">{{ "Email" | trans }}</label>
+        <input id="login_user" type="text" name="_username" value="{{ last_username | default('') }}" />
+
+        <label for="login_pass">{{ "Password" | trans }}</label>
+        <input id="login_pass" type="password" name="_password" />
+
+        <input type="submit" value="{{ "Login" | trans }}" />
+
+        <input type="checkbox" id="remember_me" name="_remember_me" checked />
+        <label for="remember_me">{{ "Keep me logged in" | trans }}</label>
+    </form>
+
+{% endif %}

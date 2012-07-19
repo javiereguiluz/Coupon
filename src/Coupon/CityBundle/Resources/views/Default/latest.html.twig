@@ -1,0 +1,39 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}Latest offers at {{ city.name }}{% endblock %}
+{% block id 'latest' %}
+
+{% block rss %}
+<link rel="alternate" type="application/rss+xml" title="Latest offers at {{ city.name }} RSS" href="{{ url('city_latest', { 'city': city.slug, '_format': 'rss' }) }}" />
+{% endblock %}
+
+{% block article %}
+    <h1>{{ "Latest offers at" | trans }} <strong>{{ city.name }}</strong></h1>
+
+    {% for offer in offers %}
+        {% include 'OfferBundle:Default:includes/offer_basic.html.twig' %}
+    {% endfor %}
+{% endblock %}
+
+{% block aside %}
+    {{ parent() }}
+
+    <section id="nearby">
+        <h2>{{ "Offers in other cities" | trans }}</h2>
+        <ul>
+            {% for city in nearby %}
+            <li><a href="{{ path('city_latest', { 'city': city.slug }) }}">{{ city.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="aboutus">
+        <h2>{{ "About Us" | trans }}</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends '::frontend.html.twig' %}
+
+{% block title %}{{ offer.name }}{% endblock %}
+{% block id 'offer' %}
+
+{% block article %}
+    {% include 'OfferBundle:Default:includes/offer_detail.html.twig' %}
+{% endblock %}
+
+{% block aside %}
+    {{ parent() }}
+
+    <section id="nearby">
+        <h2>Offers in other cities</h2>
+        <ul>
+            {% for offer in nearby %}
+            <li>{{ offer.city.name }}: <a href="{{ path('offer', { 'city': offer.city.slug, 'slug': offer.slug }) }}">{{ offer.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section id="terms">
+        <h2>General terms</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.</p>
+    </section>
+{% endblock %}

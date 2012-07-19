@@ -1,0 +1,18 @@
+{% extends '::frontend.html.twig' %}
+
+{% block id 'user' %}
+{% block title %}Purchased {{ offer.name }}{% endblock %}
+
+{% block article %}
+<h1>Purchase completed successfully</h1>
+
+<p>In a few moments, you'll be charged <strong>{{ offer.price }}</strong> euros
+in the following credit card: <strong>{{ _self.mask(user.creditCard) }}</strong>.</p>
+
+<p><a href="{{ path('homepage') }}">Keep shopping</a> or check your 
+<a href="{{ path('user_purchases') }}">recent purchases</a>.</p>
+{% endblock %}
+
+{% macro mask(number) %}
+    {{ number | replace({'1': '&bull;', '2': '&bull;', '3': '&bull;', '9': '&bull;', '0': '&bull;'}) | raw }}
+{% endmacro %}
