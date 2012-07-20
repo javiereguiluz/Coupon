@@ -10,7 +10,7 @@ repository has two branches:
 
 1) **Clone** the repository: `git clone git://github.com/javiereguiluz/Coupon.git my-dir`
 
-2) **Enter** into `my-dir` repository
+2) **Enter** into `my-dir` directory.
 
 3) Select the appropriate **branch**: `git checkout 2.0`
 
